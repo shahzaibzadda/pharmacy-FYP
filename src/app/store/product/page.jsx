@@ -50,7 +50,7 @@ const ProductDetailsContent = () => {
                 {filteredProducts.map(product => (
                     <div key={product._id} className="bg-white rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-6 items-center border border-[#D7C49EFF] hover:shadow-2xl transition">
                         <div className="w-40 h-40 flex-shrink-0 flex items-center justify-center bg-[#f7f7fa] rounded-lg overflow-hidden">
-                            <Image src={product.img || "/asset/logo.png"} alt={product.name} width={160} height={160} className="object-contain" />
+                            <Image src={product.img || "/asset/logo.png"} alt={product.name} width={160} height={160} className="object-contain" unoptimized />
                         </div>
                         <div className="flex-1">
                             <h3 className="text-2xl font-bold text-[#343148FF] mb-2">{product.name}</h3>

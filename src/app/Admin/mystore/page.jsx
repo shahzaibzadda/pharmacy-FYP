@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import PopupForm from "@/components/mystorepopup";
 import { useRouter } from "next/navigation";
 const API_URL = "/api/products";
+import Image from "next/image";
 const PRODUCTS_PER_PAGE = 15;
 
 function AllProduct() {
@@ -177,9 +178,16 @@ function AllProduct() {
                   ) : (
                     paginatedProducts.map(product => (
                       <tr key={product._id} className="hover:bg-[#343148FF] hover:text-white font-medium transition">
-                        <td className="px-4 py-2">
-                          <img src={product.img || "/asset/img/1.webp"} alt={product.name} className="w-16 h-16 object-cover rounded shadow border border-[#343148FF]" />
-                        </td>
+                      <td className="px-4 py-2">
+  <Image
+    src={product.img || "/asset/img/1.webp"}
+    alt={product.name}
+    width={64}
+    height={64}
+    className="object-cover rounded shadow border border-[#343148FF]"
+    unoptimized
+  />
+</td>
                         <td className="px-4 py-2">{product.name}</td>
                         <td className="px-4 py-2">Rs. {product.price}</td>
                         <td className="px-4 py-2">{product.stock}</td>

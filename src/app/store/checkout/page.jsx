@@ -310,7 +310,7 @@ export default function CheckoutPage() {
           <div className="divide-y divide-blue-200">
             {cart.items.map((item, i) => (
               <div key={i} className="flex items-center gap-2 sm:gap-4 py-2 sm:py-3">
-                <Image src={item.product.img || item.product.imageUrl} alt={item.product.name} width={40} height={40} className="rounded-lg shadow w-10 h-10 sm:w-14 sm:h-14" />
+                <Image src={item.product.img || item.product.imageUrl} alt={item.product.name} width={40} height={40} className="rounded-lg shadow w-10 h-10 sm:w-14 sm:h-14" unoptimized />
                 <div className="flex-1">
                   <div className="font-semibold text-gray-800 text-xs sm:text-base">{item.product.name}</div>
                   <div className="text-xs text-gray-500">Qty: {item.quantity}</div>

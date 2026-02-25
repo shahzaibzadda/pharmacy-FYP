@@ -115,6 +115,7 @@ export function MedicineCarousel() {
                   className="object-cover"
                   priority
                   sizes="100vw"
+                  unoptimized
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center p-4 sm:p-8 md:p-12 lg:p-16">

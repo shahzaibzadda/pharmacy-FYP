@@ -59,6 +59,7 @@ const BrandsMarquee = () => {
                       height={80}
                       className="object-contain max-h-[80px] w-auto"
                       priority={index < 7}
+                      unoptimized
                     />
                   </div>
                 </div>
