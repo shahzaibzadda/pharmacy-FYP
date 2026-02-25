@@ -27,7 +27,7 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      dbName: 'your-database-name', // Optional: specify db name here or in URI
+      dbName: 'Pharmacy', // Optional: specify db name here or in URI
     };
 
     cached.promise = mongoose

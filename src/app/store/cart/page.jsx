@@ -24,6 +24,7 @@ const CartPage = () => {
     try {
       const res = await axios.get('/api/cart');
       setCart(res.data.data);
+      console.log('Cart data:', res.data.data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load cart.');
     } finally {
@@ -37,6 +38,7 @@ const CartPage = () => {
     setError(null);
     try {
       await axios.patch('/api/cart', { productId, quantity });
+      console.log('Quantity updated successfully');
       await fetchCart();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update quantity.');

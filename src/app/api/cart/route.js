@@ -2,16 +2,16 @@
 // POST: Add a product to the cart or update its quantity.
 // PATCH: Update the quantity of a cart item or the cart status.
 // DELETE: Remove a product from the cart or clear the cart.
-import dbConnect from '@/lib/dbConnect';
-import Cart from '@/models/Cart';
-import Product from '@/models/Product';
-import { getDataFromToken } from '@/lib/getDataFromToken';
-import { NextResponse } from 'next/server';
+import dbConnect from "@/lib/dbConnect";
+import Cart from "@/models/Cart";
+import Product from "@/models/Product";
+import { getDataFromToken } from "@/lib/getDataFromToken";
+import { NextResponse } from "next/server";
 
 // Helper: get userId from request
 async function getUserId(request) {
   const userData = await getDataFromToken(request);
-  if (!userData) throw new Error('Unauthorized');
+  if (!userData) throw new Error("Unauthorized");
   return userData;
 }
 
@@ -20,13 +20,16 @@ export async function GET(request) {
   try {
     await dbConnect();
     const userId = await getUserId(request);
-    let cart = await Cart.findOne({ user: userId }).populate('items.product');
+    let cart = await Cart.findOne({ user: userId }).populate("items.product");
     if (!cart) {
       cart = await Cart.create({ user: userId, items: [], total: 0 });
     }
     return NextResponse.json({ success: true, data: cart });
   } catch (error) {
-    return NextResponse.json({ success: false, message: error.message }, { status: 401 });
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 401 },
+    );
   }
 }
 
@@ -35,13 +38,18 @@ export async function POST(request) {
   try {
     await dbConnect();
     const userId = await getUserId(request);
+    const product = await Product.findOne();
+    console.log("First product:", product);
     const { productId, quantity = 1 } = await request.json();
-    if (!productId) throw new Error('Product ID required');
-    const product = await Product.findById(productId);
-    if (!product) throw new Error('Product not found');
+    if (!productId) throw new Error("Product ID required");
+    console.log("Incoming productId:", productId);
+    // const product = await Product.findById(productId);
+    if (!product) throw new Error("Product not found");
     let cart = await Cart.findOne({ user: userId });
     if (!cart) cart = await Cart.create({ user: userId, items: [], total: 0 });
-    const itemIndex = cart.items.findIndex(i => i.product.toString() === productId);
+    const itemIndex = cart.items.findIndex(
+      (i) => i.product.toString() === productId,
+    );
     if (itemIndex > -1) {
       cart.items[itemIndex].quantity += quantity;
       cart.items[itemIndex].price = product.price;
@@ -52,7 +60,11 @@ export async function POST(request) {
     await cart.save();
     return NextResponse.json({ success: true, data: cart });
   } catch (error) {
-    return NextResponse.json({ success: false, message: error.message }, { status: 400 });
+    console.error("Error in POST /api/cart:", error);
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 400 },
+    );
   }
 }
 
@@ -63,10 +75,10 @@ export async function PATCH(request) {
     const userId = await getUserId(request);
     const { productId, quantity, status } = await request.json();
     let cart = await Cart.findOne({ user: userId });
-    if (!cart) throw new Error('Cart not found');
-    if (productId && typeof quantity === 'number') {
-      const item = cart.items.find(i => i.product.toString() === productId);
-      if (!item) throw new Error('Item not found in cart');
+    if (!cart) throw new Error("Cart not found");
+    if (productId && typeof quantity === "number") {
+      const item = cart.items.find((i) => i.product.toString() === productId);
+      if (!item) throw new Error("Item not found in cart");
       item.quantity = quantity;
     }
     if (status) cart.status = status;
@@ -74,7 +86,10 @@ export async function PATCH(request) {
     await cart.save();
     return NextResponse.json({ success: true, data: cart });
   } catch (error) {
-    return NextResponse.json({ success: false, message: error.message }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 400 },
+    );
   }
 }
 
@@ -85,9 +100,9 @@ export async function DELETE(request) {
     const userId = await getUserId(request);
     const { productId } = await request.json();
     let cart = await Cart.findOne({ user: userId });
-    if (!cart) throw new Error('Cart not found');
+    if (!cart) throw new Error("Cart not found");
     if (productId) {
-      cart.items = cart.items.filter(i => i.product.toString() !== productId);
+      cart.items = cart.items.filter((i) => i.product.toString() !== productId);
     } else {
       cart.items = [];
     }
@@ -95,6 +110,9 @@ export async function DELETE(request) {
     await cart.save();
     return NextResponse.json({ success: true, data: cart });
   } catch (error) {
-    return NextResponse.json({ success: false, message: error.message }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 400 },
+    );
   }
 }
