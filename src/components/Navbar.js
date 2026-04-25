@@ -234,7 +234,7 @@ const Navbar = () => {
           <div className="p-4 border-t border-teal-700">
             <a
               href="/profile"
-              onClick={handleNav("/profile")}
+              onClick={handleNav("/store/profile")}
               className="flex items-center justify-center py-2 px-4 bg-teal-600 rounded hover:bg-teal-700 transition"
             >
               <FiUser className="mr-2" />
