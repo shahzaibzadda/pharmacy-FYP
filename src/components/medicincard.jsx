@@ -8,7 +8,7 @@ const ArticleCard = ({ title, imageUrl, date, className = "" }) => {
 
   return (
     <Link href={`store/${slug}`}>
-      <div className={`relative w-[300px] h-[220px] rounded-xl overflow-hidden font-sans group cursor-pointer ${className}`}>
+      <div className={`relative w-[220px] h-[200px] rounded-xl overflow-hidden font-sans group cursor-pointer ${className}`}>
         <img
           src={imageUrl}
           alt="article-cover"

@@ -112,20 +112,20 @@ const Navbar = () => {
                 className="h-16 w-16 mr-2 rounded-full shadow-lg"
               />
               {/* <span className="text-secondary">+</span> */}
-              <span className="text-secondary">Saydaliyya</span>
+              <span >Saydaliyya</span>
               {loadingLink === "/" && <FiLoader className="ml-2 animate-spin text-secondary" />}
             </div>
           </a>
         </div>
 
         {/* Search Bar - Desktop */}
-        <div className="hidden md:flex flex-1 mx-8 max-w-xl bg-secondary rounded-full p-0.5">
+        <div className="hidden md:flex flex-1 mx-8 max-w-xl bg-secondary rounded-full p-0.5 ">
           <div className="flex items-center gap-2 px-1">
-            <span className={`font-semibold text-xs text-primary px-1 sm:text-sm rounded-md ${!toggle ? 'border border-primary' : 'border-none'}`}>Search</span>
+            <span className={`font-semibold text-xs px-1 sm:text-sm rounded-md ${!toggle ? 'border ' : 'border-none'}`}>Search</span>
             <button
               type="button"
               onClick={() => setToggle(t => !t)}
-              className={`relative w-12 h-6 rounded-full border border-primary transition-colors duration-300 focus:outline-none ${toggle ? 'bg-secondary' : 'bg-primary'}`}
+              className={`relative w-12 h-6 rounded-full border transition-colors duration-300 focus:outline-none ${toggle ? 'bg-secondary' : 'bg-primary'}`}
               aria-pressed={toggle}
               aria-label="Toggle AI Search"
             >
@@ -134,13 +134,13 @@ const Navbar = () => {
                 style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}
               />
             </button>
-            <span className={`font-semibold text-primary px-1 rounded-md text-xs sm:text-sm ${toggle ? 'border border-primary' : 'border-none'}`}>AI</span>
+            <span className={`font-semibold text-white px-1 rounded-md text-xs sm:text-sm ${toggle ? 'border border-primary' : 'border-none'}`}>AI</span>
           </div>
           <form className="relative w-full" onSubmit={handleSearch}>
             <input
               type="text"
               placeholder="Search entire store here..."
-              className="w-full py-2 px-4 bg-primary rounded-full text-gray-800 focus:outline-none"
+              className="w-full py-2 px-4 bg-primary rounded-full text-white-800 focus:outline-none"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               disabled={searchLoading}
@@ -155,8 +155,8 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           {/* Cart Icon */}
           <a href="/store/cart" onClick={handleNav("/store/cart")}
-            className="relative flex items-center group hover:text-secondary transition">
-            <FiShoppingCart className="text-secondary group-hover:font-bold" size={24} />
+            className="relative flex items-center group hover:text-white transition">
+            <FiShoppingCart className="text-white group-hover:font-bold" size={24} />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5 shadow">
                 {cartCount}
@@ -170,8 +170,8 @@ const Navbar = () => {
             onClick={handleNav("/store/profile")}
             className="hidden md:flex items-center group hover:text-secondary transition"
           >
-            <FiUser className="mr-1 text-secondary group-hover:font-bold" />
-            <span className="font-semibold group-hover:font-bold text-secondary">{user === null ? "user" : user.username}</span>
+            <FiUser className="mr-1 text-white group-hover:font-bold" />
+            <span className="font-semibold group-hover:font-bold text-white">{user === null ? "user" : user.username}</span>
             {loadingLink === "/store/profile" && <FiLoader className="ml-2 animate-spin text-secondary" />}
           </a>
           <button

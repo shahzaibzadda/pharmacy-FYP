@@ -81,10 +81,10 @@ export default function OCRPage() {
 
   return (
     <div className="w-full max-w-lg mx-auto bg-white/90 rounded-2xl shadow-2xl p-6 mt-4 mb-8 border border-gray-100 backdrop-blur-lg relative" ref={cardRef}>
-      <h2 className="text-2xl font-extrabold text-teal-700 mb-6 text-center tracking-tight">AI Prescription Reader</h2>
+      <h2 className="text-2xl font-extrabold text-[#48A111] mb-6 text-center tracking-tight">AI Prescription Reader</h2>
       <div className="flex flex-col items-center gap-4">
-        <label className="w-full flex flex-col items-center px-4 py-6 bg-teal-50 text-teal-700 rounded-lg shadow-md tracking-wide uppercase border border-teal-200 cursor-pointer hover:bg-teal-100 transition">
-          <svg className="w-8 h-8 mb-2 text-teal-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+       <label className="w-full flex flex-col items-center px-4 py-6 bg-[#48A111] text-white rounded-lg shadow-md tracking-wide uppercase border border-[#25490f] cursor-pointer hover:bg-[#3e8d0e] transition">
+          <svg className="w-8 h-8 mb-2 text-#25671E-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4a1 1 0 011-1h8a1 1 0 011 1v12m-5 4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
           </svg>
           <span className="text-base leading-normal mb-1">Select a prescription image</span>
@@ -98,7 +98,7 @@ export default function OCRPage() {
         </label>
         <button
           onClick={handleUpload}
-          className="w-full px-6 py-2 mt-2 bg-gradient-to-r from-teal-500 to-teal-700 text-white font-semibold rounded-lg shadow hover:from-teal-600 hover:to-teal-800 transition disabled:opacity-60"
+          className="w-full px-6 py-2 mt-2 bg-gradient-to-r from-[#1e4207] to-[#3e8d0e] text-white font-semibold rounded-lg shadow hover:from-[#3e8d0e] hover:to-[#2f6f0a] transition disabled:opacity-100"
           disabled={loading || !file}
         >
           {loading ? (

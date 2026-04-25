@@ -126,9 +126,9 @@ export function MedicineCarousel() {
                     <p className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4">
                       {item.description}
                     </p>
-                    <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-1 sm:px-5 sm:py-1.5 md:px-6 md:py-2 rounded-full font-medium transition hover:scale-105 text-sm sm:text-base">
-                      {item.cta}
-                    </button>
+                    <button className="bg-[#48A111] hover:bg-[#3e8d0e] text-white px-4 py-1 sm:px-5 sm:py-1.5 md:px-6 md:py-2 rounded-full font-medium transition hover:scale-105 text-sm sm:text-base">
+  {item.cta}
+</button>
                   </div>
                 </div>
               </div>
@@ -137,16 +137,16 @@ export function MedicineCarousel() {
         </CarouselContent>
         
         {/* Navigation and indicators (unchanged) */}
-        <CarouselPrevious className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-teal-800 border-none size-8 sm:size-10 shadow-md hover:scale-110 transition" />
-        <CarouselNext className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-teal-800 border-none size-8 sm:size-10 shadow-md hover:scale-110 transition" />
+        <CarouselPrevious className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#48A111] hover:text-[#3e8d0e] border-none size-8 sm:size-10 shadow-md hover:scale-110 transition" />
+        <CarouselNext className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#48A111] hover:text-[#3e8d0e] border-none size-8 sm:size-10 shadow-md hover:scale-110 transition" />
         <div className="flex justify-center absolute left-1/2 bottom-2 sm:bottom-3 md:bottom-4 gap-1 sm:gap-2 transform -translate-x-1/2">
           {Array.from({ length: MEDICINE_CAROUSEL_ITEMS.length }).map((_, index) => (
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
               className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
-                current === index + 1 ? "bg-teal-600 w-4 sm:w-6" : "bg-gray-300 w-2 sm:w-3"
-              }`}
+  current === index + 1 ? "bg-[#48A111] w-4 sm:w-6" : "bg-gray-300 w-2 sm:w-3"
+}`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

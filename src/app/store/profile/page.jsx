@@ -68,7 +68,7 @@ const ProfilePage = () => {
         <div>
             <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-green-100 py-10 px-2">
                 <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center flex flex-col gap-8">
-                    <h1 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-2 tracking-tight drop-shadow">Profile</h1>
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-[#48A111] mb-2 tracking-tight drop-shadow">Profile</h1>
                     {loading ? (
                         <p className="text-gray-700">Loading user data...</p>
                     ) : error ? (

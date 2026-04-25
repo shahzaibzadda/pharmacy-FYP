@@ -121,7 +121,7 @@ function AllProduct() {
   );
 
   return (
-    <section className="py-28 bg-[#343148FF] min-h-screen">
+    <section className="py-28 bg-[#ffffff] min-h-screen">
       <div className="container mx-auto px-4">
         {statusMsg && (
           <div className={`mb-4 p-3 rounded-md text-center font-semibold shadow-lg ${statusMsg.isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
@@ -134,7 +134,7 @@ function AllProduct() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
           <button
             onClick={() => setShowPopup(true)}
-            className="bg-[#D7C49EFF] hover:border-2 border-[#D7C49EFF] px-5 py-3 text-white rounded-md text-xs font-semibold w-full md:w-auto shadow-md hover:scale-105 transition"
+            className="bg-[#48A111] hover:border-2 border-[#48A111] px-5 py-3 text-white rounded-md text-xs font-semibold w-full md:w-auto shadow-md hover:scale-101 transition"
           >
             Add New Product
           </button>
@@ -142,7 +142,7 @@ function AllProduct() {
             <input
               type="text"
               placeholder="Search by ID or name..."
-              className="w-full px-4 py-2 rounded-md border bg-[#D7C49EFF] border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D7C49EFF] text-white placeholder:text-white/80 shadow"
+              className="w-full px-4 py-2 rounded-md border bg-[#48A111] border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4b8527] text-white placeholder:text-white/80 shadow"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -160,17 +160,17 @@ function AllProduct() {
           <div className={`${showPopup || showEditPopup ? "w-full md:w-2/3" : "w-full"}`}>
             <div className="p-4 bg-white shadow-xl rounded-xl overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr className="text-left text-xs font-medium text-gray-500 uppercase">
-                    <th className="px-4 py-2">Image</th>
-                    <th className="px-4 py-2">Name</th>
-                    <th className="px-4 py-2">Price</th>
-                    <th className="px-4 py-2">Stock</th>
-                    <th className="px-4 py-2">ID</th>
-                    <th className="px-4 py-2">Actions</th>
+                <thead className="bg-[#25671E]">
+                  <tr className="text-left  text-xs font-bold text-white uppercase">
+                    <th className="px-4 py-4">Image</th>
+                    <th className="px-4 py-4">Name</th>
+                    <th className="px-4 py-4">Price</th>
+                    <th className="px-4 py-4">Stock</th>
+                    <th className="px-4 py-4">ID</th>
+                    <th className="px-4 py-4">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="bg-[#D7C49EFF] divide-y divide-gray-300 text-sm">
+                <tbody className="bg-[#48A111] divide-y divide-gray-300 text-sm">
                   {loading ? (
                     <tr><td colSpan="6" className="text-center py-4 text-white font-semibold animate-pulse">Loading products...</td></tr>
                   ) : paginatedProducts.length === 0 ? (

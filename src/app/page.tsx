@@ -23,7 +23,7 @@ const page = () => {
     user();
   }, []);
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#343148FF] to-[#D7C49EFF] relative overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#68d921] to-[#0c5704] relative overflow-hidden">
       <div className="flex flex-col items-center justify-center flex-1 z-10">
         <div className="flex flex-col items-center justify-center">
           <div className="animate-spin-slow mb-8">
@@ -35,7 +35,7 @@ const page = () => {
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-4 animate-fade-in text-center">
             Please wait...<br />
-            <span className="text-[#D7C49EFF]">Saydaliyya</span> is preparing your experience
+            <span className="text-[#1aff00]">Saydaliyya</span> is preparing your experience
           </h1>
           <p className="text-lg md:text-xl text-white/80 mb-8 animate-fade-in delay-200 text-center max-w-xl">
             Loading your personalized pharmacy journey. This will only take a moment.

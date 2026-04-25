@@ -11,7 +11,7 @@ export default function AdminNavbar() {
     <header
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        background: "rgba(52,49,72,0.92)",
+        background: "rgba(72, 161, 17, 0.92)",
         backdropFilter: "blur(8px)",
         boxShadow: "0 4px 24px 0 rgba(52,49,72,0.12)",
         borderBottom: "2px solid #D7C49E",
@@ -23,12 +23,12 @@ export default function AdminNavbar() {
           <img
             src="/asset/logo.png"
             className="h-12 w-12 rounded-full border-2 shadow-lg"
-            style={{ borderColor: "#D7C49E" }}
+            style={{ borderColor: "#F7F0F0" }}
             alt="Pharmacy Logo"
           />
           <span
             className="text-2xl font-extrabold tracking-wide drop-shadow"
-            style={{ color: "#D7C49E", letterSpacing: "0.04em" }}
+            style={{ color: "#F7F0F0", letterSpacing: "0.04em" }}
           >
             Saydaliyya Admin
           </span>
@@ -109,8 +109,8 @@ function NavLink({ href, icon, label, onClick, mobile }) {
       onClick={onClick}
       className={`flex items-center gap-2 font-bold px-5 py-2 rounded-2xl transition-all duration-200
         ${mobile
-          ? "text-[#D7C49E] bg-[#343148FF] hover:bg-[#D7C49E] hover:text-[#343148FF] border border-[#D7C49E] mb-1"
-          : "text-[#343148FF] bg-[#D7C49E] hover:bg-[#343148FF] hover:text-[#D7C49E] border-2 border-[#D7C49E]"
+          ? "text-[#D7C49E] bg-[#343148FF] hover:bg-[#D7C49E] hover:text-[#353d2b] border border-[#D7C49E] mb-1"
+          : "text-[#000000] bg-[#ffffff] hover:bg-[#48A111] hover:text-[#ffffff] border-2 border-[#ffffff]"
         }
         shadow group`}
       style={{

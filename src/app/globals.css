@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme{
-    --color-primary: #D7C49EFF;
-    --color-secondary: #343148FF
+    --color-primary: #48A111;
+    --color-secondary: #25671E;
 }
 
 .animate-fade-in { animation: fadeIn 3s ease; }

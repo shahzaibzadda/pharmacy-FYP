@@ -51,7 +51,7 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
-        <h1 className="text-3xl font-bold text-center text-blue-700 mb-6 drop-shadow">Login</h1>
+        <h1 className="text-3xl font-bold text-center text-[#48A111] mb-6 drop-shadow">Login</h1>
         {toast && (
           <div className={`mb-4 px-4 py-3 rounded text-center font-semibold ${toast.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>{toast.msg}</div>
         )}
@@ -63,7 +63,7 @@ const LoginPage = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.email ? 'border-red-400' : 'border-gray-300'} focus:ring-2 focus:ring-blue-200 outline-none`}
+              className={`w-full px-4 py-2 rounded-lg border ${errors.email ? 'border-red-400' : 'border-gray-300'} focus:ring-2 focus:ring-green-200 outline-none`}
               placeholder="Enter your email"
               disabled={loading}
             />
@@ -84,7 +84,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+           className="w-full py-2 mt-2 bg-[#2e680b] hover:bg-[#48A111] text-white font-bold rounded-lg shadow transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             disabled={loading}
           >
             {loading && <span className="loader border-2 border-t-2 border-blue-200 border-t-blue-600 rounded-full w-5 h-5 animate-spin"></span>}
@@ -92,7 +92,7 @@ const LoginPage = () => {
           </button>
         </form>
         <p className="mt-6 text-center text-gray-600 text-sm">
-          Don't have an account? <a href="/signup" className="text-blue-600 hover:underline font-semibold">Sign Up</a>
+          Don't have an account? <a href="/signup" className="text-[#48A111] hover:underline font-semibold">Sign Up</a>
         </p>
       </div>
       <style jsx>{`.loader { display: inline-block; vertical-align: middle; }`}</style>

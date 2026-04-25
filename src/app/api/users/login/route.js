@@ -40,7 +40,7 @@ export async function POST(request) {
             email: user.email,
             isAdmin: user.isAdmin,
         };
-        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: '1d' });
+        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: '7d' });
 
         const response = NextResponse.json( {
             message: "Login successful",

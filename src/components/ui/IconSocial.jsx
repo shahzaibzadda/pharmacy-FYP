@@ -2,9 +2,9 @@ import React from "react";
 import { FaGithub, FaLinkedin,FaWhatsapp , FaYoutube, FaTwitch } from "react-icons/fa";
 
 const icons = [
-  { icon: <FaGithub />, path: "https://github.com/AliUsman143" },
+  { icon: <FaGithub />, path: "https://github.com/shahzaibzadda" },
   { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/muhammad-ali-usman-652061317/" },
-  { icon: <FaWhatsapp  />, path: "https://wa.me/9203051023906" },
+  { icon: <FaWhatsapp  />, path: "https://wa.me/9203269850071" },
 ];
 
 const IconSocial = ({ containerstyle, iconstyle }) => {
