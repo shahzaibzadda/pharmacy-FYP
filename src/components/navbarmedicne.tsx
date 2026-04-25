@@ -57,7 +57,7 @@ const NavbarMedicine = () => {
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="bg-teal-800 text-white px-4 py-2 w-full text-left"
+          className="bg-[#48A111] text-white px-4 py-2 w-full text-left"
         >
           Categories
         </button>

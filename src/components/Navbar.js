@@ -190,7 +190,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-teal-800 absolute w-full z-10 shadow-lg">
+        <div className="md:hidden bg-[#25671E] absolute w-full z-10 shadow-lg">
           {/* Mobile Search */}
           <div className="p-4 border-b border-teal-700">
             <div className="flex items-center gap-2 m-5">
@@ -213,12 +213,12 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search entire store..."
-                className="w-full py-2 border-2 px-4 rounded-full text-gray-800 focus:outline-none"
+                className="w-full py-2 border-2 border-[#48A111] px-4 rounded-full text-white focus:outline-none"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 disabled={searchLoading}
               />
-              <button type="submit" className="absolute right-0 top-0 h-full px-4 bg-teal-600 rounded-r-full hover:bg-teal-700 transition" disabled={searchLoading}>
+              <button type="submit" className="absolute right-0 top-0 h-full px-4 bg-[#48A111] rounded-r-full hover:bg-teal-70 transition" disabled={searchLoading}>
                 {searchLoading ? <FiLoader className="animate-spin text-white" /> : <FiSearch className="text-white" />}
               </button>
             </form>
@@ -235,7 +235,7 @@ const Navbar = () => {
             <a
               href="/profile"
               onClick={handleNav("/store/profile")}
-              className="flex items-center justify-center py-2 px-4 bg-teal-600 rounded hover:bg-teal-700 transition"
+              className="flex items-center justify-center py-2 px-4 bg-[#48A111] rounded hover:bg-teal-700 transition"
             >
               <FiUser className="mr-2" />
               {user === null ? "user" : user.username}
