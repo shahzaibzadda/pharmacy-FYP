@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Tesseract from "tesseract.js";
 import axios from 'axios';
 import { useProducts } from "@/app/Context/ProductsContext";
@@ -14,7 +14,35 @@ export default function OCRPage() {
   const [showPopover, setShowPopover] = useState(false);
   const [success, setSuccess] = useState(false);
   const cardRef = useRef(null);
-    const { products } = useProducts();
+  const popoverRef = useRef(null);
+  const { products } = useProducts();
+
+  // ✅ Improved product matching function
+  const findProductByName = (medicineName) => {
+    if (!products.length) return null;
+    
+    const searchTerm = medicineName.toLowerCase().trim();
+    
+    // First try: Exact match
+    let found = products.find(p => p.name.toLowerCase() === searchTerm);
+    if (found) return found;
+    
+    // Second try: Partial match
+    found = products.find(p => 
+      p.name.toLowerCase().includes(searchTerm) || 
+      searchTerm.includes(p.name.toLowerCase())
+    );
+    if (found) return found;
+    
+    // Third try: Remove common words
+    const cleanSearch = searchTerm.replace(/tablet|capsule|syrup|injection|cream|ointment|drop|sirup/gi, '').trim();
+    if (cleanSearch !== searchTerm) {
+      found = products.find(p => p.name.toLowerCase().includes(cleanSearch));
+      if (found) return found;
+    }
+    
+    return null;
+  };
 
   const handleUpload = async () => {
     if (!file) return;
@@ -25,66 +53,84 @@ export default function OCRPage() {
     setCartMsg('');
     setShowPopover(false);
 
-    // Step 1: OCR in browser
-    const { data: { text: ocrText } } = await Tesseract.recognize(file, "eng");
-    setRawText(ocrText);
-
-    // Step 2: Send OCR text to API for GPT extraction
     try {
+      const { data: { text: ocrText } } = await Tesseract.recognize(file, "eng");
+      setRawText(ocrText);
+
       const res = await fetch("/api/ocr", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ocrText }),
       });
       const data = await res.json();
+      
       if (res.ok) {
-        setResult(data.medicines);
+        const medicinesWithStatus = data.medicines.map(med => {
+          const existingProduct = findProductByName(med.name);
+          return {
+            ...med,
+            exists: !!existingProduct,
+            product: existingProduct
+          };
+        });
+        setResult(medicinesWithStatus);
         setShowPopover(true);
-      } else setError(data.error || "Failed to extract medicines.");
-    } catch {
+      } else {
+        setError(data.error || "Failed to extract medicines.");
+      }
+    } catch (err) {
       setError("Network error.");
+      console.error(err);
     }
     setLoading(false);
   };
 
-  // Add this function inside your OCRPage component, before the return:
   const handleAddToCart = async (e, med) => {
     e.stopPropagation();
     setCartMsg('');
-    setLoading(true);
     setError(null);
     setSuccess(false);
-    const existingProduct = products.find(p => p.name.toLowerCase() === med.name.toLowerCase());
-    console.log("Found product:", existingProduct);
+    
+    const existingProduct = med.product || findProductByName(med.name);
+    
     if (!existingProduct) {
-      setError(`Product "${med.name}" not found in the product list.`);
-      setCartMsg(`❌ ${med.name} not available.`);
+      setCartMsg(`❌ "${med.name}" not available in store.`);
       return;
     }
     
     try {
       await axios.post("/api/cart", {
-        productId: existingProduct.id || existingProduct._id, // Make sure med has id/_id
-        quantity: med.quantity || 1, // Default to 1 if quantity not specified
+        productId: existingProduct.id || existingProduct._id,
+        quantity: med.quantity || 1,
       });
       setSuccess(true);
-      setCartMsg(`✅ ${med.name} added to cart!`);
+      setCartMsg(`✅ ${existingProduct.name} added to cart!`);
       setTimeout(() => setSuccess(false), 1200);
       window.dispatchEvent(new Event('cart-updated'));
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to add to cart");
-      setCartMsg(`❌ ${med.name} not available.`);
-    } finally {
-      setLoading(false);
+      console.error("Cart error:", err);
+      setCartMsg(`❌ Failed to add ${med.name} to cart.`);
     }
   };
 
+  // Close popover when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target) && 
+          cardRef.current && !cardRef.current.contains(event.target)) {
+        setShowPopover(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <div className="w-full max-w-lg mx-auto bg-white/90 rounded-2xl shadow-2xl p-6 mt-4 mb-8 border border-gray-100 backdrop-blur-lg relative" ref={cardRef}>
+    <div className="relative w-full max-w-lg mx-auto bg-white/90 rounded-2xl shadow-2xl p-6 mt-4 mb-8 border border-gray-100 backdrop-blur-lg" ref={cardRef}>
       <h2 className="text-2xl font-extrabold text-[#48A111] mb-6 text-center tracking-tight">AI Prescription Reader</h2>
       <div className="flex flex-col items-center gap-4">
-       <label className="w-full flex flex-col items-center px-4 py-6 bg-[#48A111] text-white rounded-lg shadow-md tracking-wide uppercase border border-[#25490f] cursor-pointer hover:bg-[#3e8d0e] transition">
-          <svg className="w-8 h-8 mb-2 text-#25671E-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <label className="w-full flex flex-col items-center px-4 py-6 bg-[#48A111] text-white rounded-lg shadow-md tracking-wide uppercase border border-[#25490f] cursor-pointer hover:bg-[#3e8d0e] transition">
+          <svg className="w-8 h-8 mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4a1 1 0 011-1h8a1 1 0 011 1v12m-5 4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
           </svg>
           <span className="text-base leading-normal mb-1">Select a prescription image</span>
@@ -98,7 +144,7 @@ export default function OCRPage() {
         </label>
         <button
           onClick={handleUpload}
-          className="w-full px-6 py-2 mt-2 bg-gradient-to-r from-[#1e4207] to-[#3e8d0e] text-white font-semibold rounded-lg shadow hover:from-[#3e8d0e] hover:to-[#2f6f0a] transition disabled:opacity-100"
+          className="w-full px-6 py-2 mt-2 bg-gradient-to-r from-[#1e4207] to-[#3e8d0e] text-white font-semibold rounded-lg shadow hover:from-[#3e8d0e] hover:to-[#2f6f0a] transition disabled:opacity-50"
           disabled={loading || !file}
         >
           {loading ? (
@@ -114,19 +160,27 @@ export default function OCRPage() {
       </div>
 
       {error && (
-        <div className="mt-6 bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg text-center animate-pulse">
+        <div className="mt-6 bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg text-center">
           {error}
         </div>
       )}
 
-      {/* Popover for extracted medicines */}
+      {/* ✅ FIXED: Popover with better positioning - CENTERED ON SCREEN */}
       {showPopover && (
         <>
-          {/* Overlay only over the card */}
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm rounded-2xl z-20"></div>
-          <div className="absolute left-1/2 top-8 z-30 w-[95%] max-w-md -translate-x-1/2 shadow-2xl rounded-xl bg-white/95 border border-teal-200 p-6 animate-fade-in">
+          {/* Full screen overlay */}
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setShowPopover(false)}
+          />
+          
+          {/* Centered popover */}
+          <div 
+            ref={popoverRef}
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-[95%] max-w-md max-h-[85vh] overflow-y-auto shadow-2xl rounded-xl bg-white border border-teal-200 p-6 animate-fade-in"
+          >
             <button
-              className="absolute top-2 right-2 text-teal-700 hover:text-red-500 transition"
+              className="absolute top-2 right-2 text-teal-700 hover:text-red-500 transition z-10 bg-white rounded-full p-1"
               onClick={() => setShowPopover(false)}
               aria-label="Close"
             >
@@ -134,34 +188,45 @@ export default function OCRPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <h3 className="font-bold text-lg text-teal-800 mb-3 flex items-center gap-2">
+            
+            <h3 className="font-bold text-lg text-teal-800 mb-3 flex items-center gap-2 sticky top-0 bg-white py-2">
               <svg className="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-2a4 4 0 014-4h3m-7 6v2a4 4 0 004 4h3m-7-6H5a2 2 0 01-2-2V7a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-2" />
               </svg>
               Extracted Medicines
             </h3>
+            
             {result && result.length > 0 ? (
               <>
                 <ul className="mb-4 space-y-2">
                   {result.map((med, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-teal-700">
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-teal-100 rounded-full shadow text-teal-600 font-bold">{idx + 1}</span>
-                      <span className="font-semibold">{med.name}</span>
-                      <span className="ml-auto text-xs bg-teal-200 text-teal-800 px-2 py-0.5 rounded-full">Qty: {med.quantity}</span>
+                    <li key={idx} className={`flex items-center gap-2 p-2 rounded-lg ${med.exists ? 'bg-green-50' : 'bg-red-50'}`}>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-teal-100 rounded-full shadow text-teal-600 font-bold text-sm">
+                        {idx + 1}
+                      </span>
+                      <div className="flex-1">
+                        <span className={`font-semibold ${med.exists ? 'text-green-700' : 'text-red-600'}`}>
+                          {med.name}
+                        </span>
+                        {!med.exists && (
+                          <span className="text-xs ml-2 text-red-400">(Not in store)</span>
+                        )}
+                        <span className="text-xs text-gray-500 ml-2">Qty: {med.quantity || 1}</span>
+                      </div>
                       <button
-                        className="ml-2 p-1 rounded-full hover:bg-teal-100 transition"
-                        title="Add to Cart"
-                        onClick={e => handleAddToCart(e, med)}
-                        disabled={loading}
+                        className={`ml-2 p-1.5 rounded-full transition ${med.exists ? 'hover:bg-teal-100 cursor-pointer' : 'opacity-50 cursor-not-allowed'}`}
+                        title={med.exists ? "Add to Cart" : "Not available"}
+                        onClick={e => med.exists && handleAddToCart(e, med)}
+                        disabled={!med.exists}
                       >
-                        {/* Cart SVG */}
-                        <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m13-9l2 9m-5-9V6a2 2 0 10-4 0v7" />
                         </svg>
                       </button>
                     </li>
                   ))}
                 </ul>
+                
                 {cartMsg && (
                   <div className="mt-3 text-center text-base font-medium rounded-lg px-3 py-2"
                     style={{
@@ -171,10 +236,23 @@ export default function OCRPage() {
                     {cartMsg}
                   </div>
                 )}
+                
+                {/* Add All to Cart button */}
+                <button
+                  onClick={() => {
+                    result.filter(m => m.exists).forEach(med => {
+                      handleAddToCart({ stopPropagation: () => {} }, med);
+                    });
+                  }}
+                  className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-teal-500 to-green-600 text-white rounded-lg font-semibold hover:from-teal-600 hover:to-green-700 transition"
+                >
+                  Add All Available to Cart
+                </button>
               </>
             ) : (
               <p className="text-gray-500">No medicines detected.</p>
             )}
+            
             {rawText && (
               <details className="mt-4">
                 <summary className="cursor-pointer text-teal-700 font-semibold">Show Raw OCR Text</summary>
@@ -187,7 +265,3 @@ export default function OCRPage() {
     </div>
   );
 }
-
-// Add this to your global CSS for a fade-in animation if you want:
-// .animate-fade-in { animation: fadeIn 0.3s ease; }
-// @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none; } }
