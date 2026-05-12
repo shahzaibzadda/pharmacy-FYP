@@ -1,0 +1,746 @@
+[
+  {
+    
+    "name": "Sebamed Baby Wash",
+    "img": "/assets/babychild/sebamed.webp",
+    "description": "Gentle wash for newborns and infants.",
+    "category": "babychild",
+    "type": "Body Wash",
+    "price": 450,
+    "stock": 40
+  },
+  {
+    
+    "name": "Antibacterial Body Wash",
+    "img": "/assets/personalcare/bodywash.webp",
+    "description": "Cleans and protects against germs.",
+    "category": "Personal Care",
+    "type": "Body Wash",
+    "price": 320,
+    "stock": 140
+  },
+  {
+    
+    "name": "Bournvita Health Drink",
+    "img": "/assets/supplements/bournvita.webp",
+    "description": "Health drink with essential vitamins and iron.",
+    "category": "supplements",
+    "type": "Drink",
+    "price": 270,
+    "stock": 65
+  },
+  {
+    
+    "name": "Augmentin 625 Duo",
+    "img": "/assets/medicine/augmentin.webp",
+    "description": "Antibiotic used to treat bacterial infections.",
+    "category": "medicines",
+    "type": "Tablet",
+    "price": 150,
+    "stock": 80
+  },
+  {
+    
+    "name": "Ciprofloxacin 250mg",
+    "img": "/assets/medicines/ciprofloxacin.webp",
+    "description": "Antibiotic used to treat bacterial infections.",
+    "category": "Medicines",
+    "type": "Tablet",
+    "price": 220,
+    "stock": 90
+  },
+  {
+    
+    "name": "Cetaphil Moisturizing Lotion",
+    "img": "/assets/skincare/cetaphil.webp",
+    "description": "Hydrates dry skin without clogging pores.",
+    "category": "skinCare",
+    "type": "Lotion",
+    "price": 280,
+    "stock": 90
+  },
+  {
+    
+    "name": "Himalaya Neem Face Wash",
+    "img": "/assets/skincare/neemwash.webp",
+    "description": "Cleanses skin and prevents pimples.",
+    "category": "skinCare",
+    "type": "Face Wash",
+    "price": 135,
+    "stock": 85
+  },
+  {
+    
+    "name": "Crocin Advance Tablet",
+    "img": "/assets/medicine/crocin.webp",
+    "description": "Used for relieving mild to moderate pain and fever.",
+    "category": "medicines",
+    "type": "Tablet",
+    "price": 25,
+    "stock": 0
+  },
+  {
+    
+    "name": "ORS Sachet",
+    "img": "/assets/medicine/ors.webp",
+    "description": "Used for oral rehydration therapy.",
+    "category": "medicines",
+    "type": "powder",
+    "price": 10,
+    "stock": 2500,
+    "updatedAt": "2025-05-31T13:11:45.669Z"
+  },
+  {
+    
+    "name": "Ketoconazole Dandruff Shampoo",
+    "img": "/assets/medicosmetics/ketoconazole.webp",
+    "description": "Anti-fungal shampoo for dandruff.",
+    "category": "Medicated Cosmetics",
+    "type": "Shampoo",
+    "price": 330,
+    "stock": 95
+  },
+  {
+    
+    "name": "Fast&Up Charge",
+    "img": "/assets/supplements/fastup.webp",
+    "description": "Effervescent Vitamin C immunity booster.",
+    "category": "supplements",
+    "type": "Tablet",
+    "price": 180,
+    "stock": 60
+  },
+  {
+    
+    "name": "Adjustable Wrist Brace",
+    "img": "/assets/braces/wristbrace.webp",
+    "description": "Provides support and relief for wrist pain.",
+    "category": "Surgical & Support Braces",
+    "type": "Brace",
+    "price": 270,
+    "stock": 100
+  },
+  {
+    
+    "name": "Vaseline Body Lotion",
+    "img": "/assets/skincare/vaseline.webp",
+    "description": "Deeply moisturizes dry skin.",
+    "category": "skinCare",
+    "type": "Lotion",
+    "price": 220,
+    "stock": 75
+  },
+  {
+    
+    "name": "Pampers Diapers M 24",
+    "img": "/assets/babychild/pampers.webp",
+    "description": "Comfortable diapers for babies with anti-rash layer.",
+    "category": "babychild",
+    "type": "Diaper",
+    "price": 299,
+    "stock": 60
+  },
+  {
+    
+    "name": "Complan Kesar Badam",
+    "img": "/assets/supplements/complan.webp",
+    "description": "Complete planned food for growing kids.",
+    "category": "supplements",
+    "type": "Drink",
+    "price": 330,
+    "stock": 40
+  },
+  {
+    
+    "name": "Baby Bib Set",
+    "img": "/assets/babychild/bibs.webp",
+    "description": "Soft bibs for babies to avoid mess.",
+    "category": "babychild",
+    "type": "Accessory",
+    "price": 180,
+    "stock": 90
+  },
+  {
+    
+    "name": "Dolo 650 Tablet",
+    "img": "/assets/medicine/dolo.webp",
+    "description": "Used to relieve fever and pain.",
+    "category": "medicines",
+    "type": "Tablet",
+    "price": 35,
+    "stock": 400
+  },
+  {
+    
+    "name": "Weighing Scale",
+    "img": "/assets/electronics/scale.webp",
+    "description": "Digital scale for accurate weight check.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 950,
+    "stock": 80
+  },
+  {
+    
+    "name": "Zandu Balm",
+    "img": "/assets/medicine/zandu.webp",
+    "description": "Relief from headache, body ache, and cold.",
+    "category": "medicines",
+    "type": "Balm",
+    "price": 55,
+    "stock": 150
+  },
+  {
+    
+    "name": "Rash Cream Himalaya",
+    "img": "/assets/babychild/rashcream.webp",
+    "description": "Prevents and soothes diaper rash.",
+    "category": "babychild",
+    "type": "Cream",
+    "price": 65,
+    "stock": 70
+  },
+  {
+    
+    "name": "Nivea Soft Cream",
+    "img": "/assets/skincare/nivea.webp",
+    "description": "Light moisturizer for soft and supple skin.",
+    "category": "skinCare",
+    "type": "Cream",
+    "price": 150,
+    "stock": 100
+  },
+  {
+    
+    "name": "Hydroquinone Whitening Cream",
+    "img": "/assets/medicosmetics/hydroquinone.webp",
+    "description": "Fades dark spots and pigmentation.",
+    "category": "Medicated Cosmetics",
+    "type": "Cream",
+    "price": 520,
+    "stock": 60
+  },
+  {
+    
+    "name": "Vitamin C Brightening Serum",
+    "img": "/assets/skincare/vitcserum.webp",
+    "description": "Evens skin tone and reduces dullness.",
+    "category": "Skin Care",
+    "type": "Serum",
+    "price": 690,
+    "stock": 70
+  },
+  {
+    
+    "name": "Ecosprin 75",
+    "img": "/assets/medicine/ecosprin.webp",
+    "description": "Used for blood thinning and prevention of heart attacks.",
+    "category": "medicines",
+    "type": "Tablet",
+    "price": 30,
+    "stock": 200
+  },
+  {
+    
+    "name": "Aspirin 100mg Tablets",
+    "img": "/assets/medicines/aspirin.webp",
+    "description": "Effective pain reliever and fever reducer.",
+    "category": "Medicines",
+    "type": "Tablet",
+    "price": 120,
+    "stock": 200
+  },
+  {
+    
+    "name": "Proteinex Powder",
+    "img": "/assets/supplements/proteinex.webp",
+    "description": "Nutritional protein supplement for all ages.",
+    "category": "supplements",
+    "type": "Powder",
+    "price": 220,
+    "stock": 80
+  },
+  {
+    
+    "name": "Cerelac Wheat Apple",
+    "img": "/assets/babychild/cerelac.webp",
+    "description": "Nutritious food for babies 6+ months.",
+    "category": "babychild",
+    "type": "Cereal",
+    "price": 199,
+    "stock": 70
+  },
+  {
+    
+    "name": "Omron Nebulizer",
+    "img": "/assets/electronics/nebulizer.webp",
+    "description": "Home use nebulizer for respiratory care.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 1999,
+    "stock": 20
+  },
+  {
+    
+    "name": "Lakme Sunscreen SPF 50",
+    "img": "/assets/skincare/lakme.webp",
+    "description": "Protects skin from harmful UV rays.",
+    "category": "skinCare",
+    "type": "Sunscreen",
+    "price": 310,
+    "stock": 50
+  },
+  {
+    
+    "name": "Exfoliating Foot Scrub",
+    "img": "/assets/personalcare/footscrub.webp",
+    "description": "Removes dead skin and softens feet.",
+    "category": "Personal Care",
+    "type": "Scrub",
+    "price": 350,
+    "stock": 90
+  },
+  {
+    
+    "name": "Niacinamide Pore Refining Toner",
+    "img": "/assets/skincare/niacinamide.webp",
+    "description": "Minimizes pores and balances skin.",
+    "category": "Skin Care",
+    "type": "Toner",
+    "price": 560,
+    "stock": 75
+  },
+  {
+    
+    "name": "Electric Toothbrush",
+    "img": "/assets/electronics/toothbrush.webp",
+    "description": "Improved oral hygiene with advanced cleaning.",
+    "category": "electronics",
+    "type": "Toothbrush",
+    "price": 1290,
+    "stock": 40
+  },
+  {
+    
+    "name": "Shoulder Immobilizer Strap",
+    "img": "/assets/braces/shoulderstrap.webp",
+    "description": "Helps stabilize and protect the shoulder.",
+    "category": "Surgical & Support Braces",
+    "type": "Strap",
+    "price": 390,
+    "stock": 40
+  },
+  {
+    
+    "name": "Garnier Micellar Water",
+    "img": "/assets/skincare/garnier.webp",
+    "description": "Removes makeup and cleans skin.",
+    "category": "skinCare",
+    "type": "Cleanser",
+    "price": 275,
+    "stock": 70
+  },
+  {
+    
+    "name": "Hair Trimmer",
+    "img": "/assets/electronics/trimmer.webp",
+    "description": "Precision grooming with stainless blades.",
+    "category": "electronics",
+    "type": "Grooming",
+    "price": 999,
+    "stock": 65
+  },
+  {
+    
+    "name": "Zincovit Multivitamin",
+    "img": "/assets/supplements/zincovit.webp",
+    "description": "Restores essential vitamins and minerals.",
+    "category": "supplements",
+    "type": "Tablet",
+    "price": 150,
+    "stock": 75
+  },
+  {
+    
+    "name": "Shelcal 500 Calcium",
+    "img": "/assets/supplements/shelcal.webp",
+    "description": "Calcium and vitamin D3 supplement.",
+    "category": "supplements",
+    "type": "Tablet",
+    "price": 180,
+    "stock": 60
+  },
+  {
+    
+    "name": "Accu-Chek Active Glucometer",
+    "img": "/assets/electronics/glucometer.webp",
+    "description": "Checks blood sugar levels instantly.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 1399,
+    "stock": 40
+  },
+  {
+    
+    "name": "Neurobion Forte",
+    "img": "/assets/supplements/neurobion.webp",
+    "description": "Vitamin B-complex supplement.",
+    "category": "supplements",
+    "type": "Tablet",
+    "price": 85,
+    "stock": 95
+  },
+  {
+    
+    "name": "Ensure Vanilla Nutrition",
+    "img": "/assets/supplements/ensure.webp",
+    "description": "Balanced nutrition for adults and elderly.",
+    "category": "supplements",
+    "type": "Powder",
+    "price": 599,
+    "stock": 50
+  },
+  {
+    
+    "name": "Dr. Morepen BP Monitor",
+    "img": "/assets/electronics/bpmonitor.webp",
+    "description": "Digital BP monitor for home use.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 1299,
+    "stock": 30
+  },
+  {
+    
+    "name": "Farlin Baby Nail Clipper",
+    "img": "/assets/babychild/nailclipper.webp",
+    "description": "Safe nail clipper for infants.",
+    "category": "babychild",
+    "type": "Tool",
+    "price": 85,
+    "stock": 50
+  },
+  {
+    
+    "name": "Metformin HCL 500mg",
+    "img": "/assets/medicines/metformin.webp",
+    "description": "Controls blood sugar levels in type 2 diabetes.",
+    "category": "Medicines",
+    "type": "Tablet",
+    "price": 180,
+    "stock": 150
+  },
+  {
+    
+    "name": "Himalaya Baby Lotion",
+    "img": "/assets/babychild/himalaya_lotion.webp",
+    "description": "Moisturizes and protects baby skin.",
+    "category": "babychild",
+    "type": "Lotion",
+    "price": 160,
+    "stock": 90
+  },
+  {
+    
+    "name": "Cervical Spine Traction Kit",
+    "img": "/assets/braces/cervicalkit.webp",
+    "description": "Relieves neck pain and tension.",
+    "category": "Surgical & Support Braces",
+    "type": "Kit",
+    "price": 650,
+    "stock": 30
+  },
+  {
+    
+    "name": "2blink Eye Drop 15ml",
+    "img": "/assets/medicine/2blink_Eye_Drop_15ml.webp",
+    "description": "Lubricates and hydrates dry eyes. Provides long-lasting moisture. Can be used with contact lenses.",
+    "category": "Supplements",
+    "type": "Eye Drop",
+    "price": 479,
+    "stock": 0
+  },
+  {
+    
+    "name": "Baby Oil Johnson’s",
+    "img": "/assets/babychild/babyoil.webp",
+    "description": "Mild baby oil for massage.",
+    "category": "babychild",
+    "type": "Oil",
+    "price": 90,
+    "stock": 110
+  },
+  {
+    
+    "name": "Pond’s Light Moisturizer",
+    "img": "/assets/skincare/ponds.webp",
+    "description": "Daily moisturizer with vitamin E.",
+    "category": "skinCare",
+    "type": "Cream",
+    "price": 120,
+    "stock": 95
+  },
+  {
+    
+    "name": "Facial Steamer",
+    "img": "/assets/electronics/steamer.webp",
+    "description": "Cleans pores and refreshes skin.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 799,
+    "stock": 60
+  },
+  {
+    
+    "name": "Mee Mee Baby Wipes",
+    "img": "/assets/babychild/meemee.webp",
+    "description": "Soft wipes for cleaning baby skin.",
+    "category": "babychild",
+    "type": "Wipes",
+    "price": 120,
+    "stock": 100
+  },
+  {
+    
+    "name": "Mamaearth Ubtan Face Mask",
+    "img": "/assets/skincare/mamaearth.webp",
+    "description": "Removes tan and brightens skin.",
+    "category": "skinCare",
+    "type": "Face Mask",
+    "price": 399,
+    "stock": 45
+  },
+  {
+    
+    "name": "Betadine Ointment",
+    "img": "/assets/medicine/betadine.webp",
+    "description": "Used for treating and preventing skin infections.",
+    "category": "medicines",
+    "type": "Ointment",
+    "price": 45,
+    "stock": 120
+  },
+  {
+    
+    "name": "Tretinoin Acne Lotion",
+    "img": "/assets/medicosmetics/tretinoin.webp",
+    "description": "Treats acne and reduces fine lines.",
+    "category": "Medicated Cosmetics",
+    "type": "Lotion",
+    "price": 490,
+    "stock": 85
+  },
+  {
+    
+    "name": "Cetrizine Tablet",
+    "img": "/assets/medicine/cetrizine.webp",
+    "description": "Relieves allergy symptoms such as runny nose, sneezing, etc.",
+    "category": "medicines",
+    "type": "Tablet",
+    "price": 20,
+    "stock": 300
+  },
+  {
+    
+    "name": "Retinol Renewal Night Cream",
+    "img": "/assets/skincare/retinolcream.webp",
+    "description": "Reduces wrinkles and boosts collagen.",
+    "category": "Skin Care",
+    "type": "Cream",
+    "price": 820,
+    "stock": 50
+  },
+  {
+    
+    "name": "Revital H Capsules",
+    "img": "/assets/supplements/revital.webp",
+    "description": "Daily health supplement with ginseng and multivitamins.",
+    "category": "supplements",
+    "type": "Capsule",
+    "price": 390,
+    "stock": 70
+  },
+  {
+    
+    "name": "Volini Pain Relief Spray",
+    "img": "/assets/medicine/volini.webp",
+    "description": "Provides relief from muscle and joint pain.",
+    "category": "medicines",
+    "type": "Spray",
+    "price": 140,
+    "stock": 90
+  },
+  {
+    
+    "name": "Johnson's Baby Powder",
+    "img": "/assets/babychild/johnsons_powder.webp",
+    "description": "Keeps baby's skin dry and soft.",
+    "category": "babychild",
+    "type": "Powder",
+    "price": 110,
+    "stock": 180
+  },
+  {
+    
+    "name": "GlucoCheck Blood Sugar Monitor",
+    "img": "/assets/medicaldevices/glucometer.webp",
+    "description": "Monitors blood glucose at home.",
+    "category": "Medical Devices",
+    "type": "Device",
+    "price": 1750,
+    "stock": 65
+  },
+  {
+    
+    "name": "Pulse Oximeter",
+    "img": "/assets/electronics/oximeter.webp",
+    "description": "Measures blood oxygen level and pulse rate.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 999,
+    "stock": 55
+  },
+  {
+    
+    "name": "Digene Antacid Gel",
+    "img": "/assets/medicine/digene.webp",
+    "description": "Relieves acidity and heartburn.",
+    "category": "medicines",
+    "type": "Syrup",
+    "price": 90,
+    "stock": 60
+  },
+  {
+    
+    "name": "Vitamin K2 + D3 Softgels",
+    "img": "/assets/supplements/vitamind3.webp",
+    "description": "Promotes bone and heart health.",
+    "category": "Vitamins & Supplements",
+    "type": "Softgel",
+    "price": 410,
+    "stock": 120
+  },
+  {
+    
+    "name": "Probiotic Complex Blend",
+    "img": "/assets/supplements/probiotic.webp",
+    "description": "Improves digestion and gut health.",
+    "category": "Vitamins & Supplements",
+    "type": "Capsule",
+    "price": 480,
+    "stock": 70
+  },
+  {
+    
+    "name": "Digital Thermometer",
+    "img": "/assets/electronics/thermometer.webp",
+    "description": "Accurate body temperature measurement.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 190,
+    "stock": 100
+  },
+  {
+    
+    "name": "Digital Fetal Doppler",
+    "img": "/assets/medicaldevices/doppler.webp",
+    "description": "Listen to baby's heartbeat at home.",
+    "category": "Medical Devices",
+    "type": "Device",
+    "price": 2200,
+    "stock": 25
+  },
+  {
+    
+    "name": "Soothing Aloe Vera Gel",
+    "img": "/assets/personalcare/aloevera.webp",
+    "description": "Moisturizes and heals dry skin.",
+    "category": "Personal Care",
+    "type": "Gel",
+    "price": 210,
+    "stock": 130
+  },
+  {
+    
+    "name": "Biotique Papaya Scrub",
+    "img": "/assets/skincare/biotique.webp",
+    "description": "Exfoliates and brightens skin.",
+    "category": "skinCare",
+    "type": "Scrub",
+    "price": 185,
+    "stock": 60
+  },
+  {
+    
+    "name": "Pulse Oximeter Fingertip",
+    "img": "/assets/medicaldevices/oximeter.webp",
+    "description": "Checks blood oxygen saturation levels.",
+    "category": "Medical Devices",
+    "type": "Device",
+    "price": 1250,
+    "stock": 80
+  },
+  {
+    
+    "name": "Electric Heating Pad",
+    "img": "/assets/electronics/heatingpad.webp",
+    "description": "Relieves back pain and joint stiffness.",
+    "category": "electronics",
+    "type": "Device",
+    "price": 599,
+    "stock": 45
+  },
+  {
+    
+    "name": "Magnesium Citrate Capsules",
+    "img": "/assets/supplements/magnesium.webp",
+    "description": "Supports muscle and nerve function.",
+    "category": "Vitamins & Supplements",
+    "type": "Capsule",
+    "price": 340,
+    "stock": 100
+  },
+  {
+    
+    "name": "WOW Aloe Vera Gel",
+    "img": "/assets/skincare/wow.webp",
+    "description": "Soothes and nourishes skin and scalp.",
+    "category": "skinCare",
+    "type": "Gel",
+    "price": 249,
+    "stock": 55
+  },
+  {
+    
+    "name": "Ostocalcium Syrup",
+    "img": "/assets/supplements/ostocalcium.webp",
+    "description": "Calcium and vitamin D3 syrup for bones.",
+    "category": "supplements",
+    "type": "Syrup",
+    "price": 95,
+    "stock": 55
+  },
+  {
+    
+    "name": "Test Medicine",
+    "img": "https://via.placeholder.com/150",
+    "description": "This is a test medicine used for pain relief.",
+    "category": "pain relief",
+    "type": "tablet",
+    "price": 100,
+    "stock": 50,
+    "createdAt": "2025-11-02T12:38:02.625Z",
+    "updatedAt": "2025-11-02T12:38:02.625Z",
+    "__v": 0
+  },
+  {
+    
+    "name": "Sebamed Baby Wash",
+    "img": "/assets/babychild/sebamed.webp",
+    "description": "Gentle wash for newborns and infants.",
+    "category": "babychild",
+    "type": "Body Wash",
+    "price": 450,
+    "stock": 40
+  }
+]

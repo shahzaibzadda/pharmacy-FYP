@@ -109,7 +109,7 @@ const Navbar = () => {
               <img
                 src="/asset/logo.png"
                 alt="Logo"
-                className="h-16 w-16 mr-2 rounded-full shadow-lg"
+                className="h-16 w-16 mr-2 object-cover rounded-full shadow-lg"
               />
               {/* <span className="text-secondary">+</span> */}
               <span >Saydaliyya</span>

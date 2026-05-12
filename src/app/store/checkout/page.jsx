@@ -24,7 +24,7 @@ const DELIVERY_OPTIONS = [
   {
     value: "urgent",
     label: "Urgent Delivery",
-    desc: "Delivered in 2-6 hours by drone",
+    desc: "Delivered in 24 hours by cargo",
     svg: (
       <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Drone icon */}

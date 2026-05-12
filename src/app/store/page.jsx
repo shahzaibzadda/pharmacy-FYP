@@ -1,9 +1,14 @@
-'use client';
+"use client";
+
 import { MedicineCarousel } from "@/components/MedicineCarousel";
 import ArticlesSection from "@/components/article-section";
 import FeaturesSection from "@/components/FeaturesSection";
 import BrandMarqee from "@/components/BrandsMarquee";
 import PrescriptionUpload from "@/components/perceptionUpload";
+import SpecialOffers from "@/components/SpecialOffers";
+
+import CategoriesSlider from "@/components/CategoriesSlider";
+
 const page = () => {
   return (
     <>
@@ -15,8 +20,10 @@ const page = () => {
           <PrescriptionUpload />
         </div>
       </div>
+
       <ArticlesSection />
       <FeaturesSection />
+      <SpecialOffers />
       <BrandMarqee />
     </>
   );

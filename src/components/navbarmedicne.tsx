@@ -8,47 +8,66 @@ const NavbarMedicine = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const categories = [
-    "Medicines",
-    "Vitamins & Supplements",
-    "Medicated Cosmetics",
-    "Surgical & Support Braces",
-    "Medical Devices",
-    "Personal Care",
-    "Skin Care",
+    { name: "Medicines", slug: "medicines" },
+    // { name: "Baby & Child", slug: "baby-child" },
+    { name: "Electronics", slug: "electronics" },
+    { name: "Vitamins & Supplements", slug: "vitamins-supplements" },
+    { name: "Medicated Cosmetics", slug: "medicated-cosmetics" },
+    { name: "Surgical Support Braces", slug: "surgical-support-braces" },
+    { name: "Medical Devices", slug: "medical-devices" },
+    { name: "Personal Care", slug: "personal-care" },
+    { name: "Skin Care", slug: "skin-care" },
   ];
 
-  // Convert category to clean slug
-  const getCategorySlug = (category: string) => {
-    return category.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-");
-  };
-
-  const getCategoryLink = (category: string) => {
-    return `/store/${getCategorySlug(category)}`; // Changed to /article/[slug]
+  const getCategoryLink = (slug: string) => {
+    return `/store/${slug}`;
   };
 
   return (
     <div>
       {/* Desktop Navigation */}
       <nav className="bg-secondary hidden md:block">
-        <div className="container mx-auto px-4">
-          <ul className="flex overflow-x-auto py-2 justify-between hide-scrollbar">
-            {categories.map((category, index) => {
-              const link = getCategoryLink(category);
-              const isActive = pathname?.startsWith(link);
+        <div className=" mx-auto px-2">
+          <ul className="flex overflow-x-auto py-2 items-center justify-between hide-scrollbar">
+            {/* PRODUCTS SECTION */}
+            <div className="flex items-center gap-2 lg:gap-4">
+              {categories.map((category, index) => {
+                const link = getCategoryLink(category.slug);
+                const isActive = pathname?.startsWith(link);
 
-              return (
-                <li key={index} className="whitespace-nowrap">
-                  <Link
-                    href={link}
-                    className={`px-3 py-1 text-sm hover:bg-primary hover:text-secondary rounded transition block ${
-                      isActive ? "bg-primary text-secondary" : ""
-                    }`}
-                  >
-                    {category}
-                  </Link>
-                </li>
-              );
-            })}
+                return (
+                  <li key={index} className="whitespace-nowrap">
+                    <Link
+                      href={link}
+                      className={`px-3 py-1 text-sm hover:bg-primary hover:text-secondary rounded transition block ${
+                        isActive ? "bg-primary text-secondary" : ""
+                      }`}
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                );
+              })}
+            </div>
+
+            {/* BORDER */}
+            <div className="h-6 w-px bg-white/40 mx-4 shadow-[0_0_10px_rgba(255,255,255,0.4)]"></div>
+
+            {/* ABOUT / CONTACT SECTION */}
+            <div className="flex items-center gap-3 whitespace-nowrap">
+              <Link
+                href="/about-us"
+                className="px-3 py-1 text-sm hover:bg-primary hover:text-secondary rounded transition block"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/contact-us"
+                className="px-3 py-1 text-sm hover:bg-primary hover:text-secondary rounded transition block"
+              >
+                Contact Us
+              </Link>
+            </div>
           </ul>
         </div>
       </nav>
@@ -61,10 +80,13 @@ const NavbarMedicine = () => {
         >
           Categories
         </button>
+
         {isMenuOpen && (
           <ul className="bg-teal-700">
+            {/* CATEGORY LINKS */}
             {categories.map((category, index) => {
-              const link = getCategoryLink(category);
+              const link = getCategoryLink(category.slug);
+
               return (
                 <li key={index}>
                   <Link
@@ -72,11 +94,34 @@ const NavbarMedicine = () => {
                     className="block px-6 py-3 hover:bg-teal-600 transition text-white"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {category}
+                    {category.name}
                   </Link>
                 </li>
               );
             })}
+
+            {/* BORDER */}
+            <div className="border-t border-white/30 mx-4"></div>
+
+            {/* ABOUT / CONTACT */}
+            <li>
+              <Link
+                href="/about-us"
+                className="block px-6 py-3 hover:bg-teal-600 transition text-white"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact-us"
+                className="block px-6 py-3 hover:bg-teal-600 transition text-white"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+            </li>
           </ul>
         )}
       </div>
@@ -85,104 +130,3 @@ const NavbarMedicine = () => {
 };
 
 export default NavbarMedicine;
-
-
-
-
-
-
-// "use client";
-// import React from "react";
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-
-// const NavbarMedicine = () => {
-//   const pathname = usePathname();
-//   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-//   const categories = [
-//     "Medicines",
-//     "Vitamins & Supplements",
-//     "Medicated Cosmetics",
-//     "Surgical & Support Braces",
-//     "Medical Devices",
-//     "Personal Care",
-//     "Skin Care",
-//   ];
-
-//   // Convert category to clean slug
-//   const getCategorySlug = (category: string) => {
-//     if (category === "Medicines") return "medicines";
-//     if (category === "Vitamins & Supplements") return "vitamins";
-//     if (category === "Medicated Cosmetics") return "cosmetics";
-//     if (category === "Surgical & Support Braces") return "Surgical";
-//     if (category === "Medical Devices") return "medicalDevices";
-//     if (category === "Personal Care") return "personalCare";
-//     if (category === "Skin Care") return "skinCare";
-//     return category.toLowerCase().replace(/ & /g, "-").replace(/ /g, "-");
-//   };
-
-//   const getCategoryLink = (category: string) => {
-//     return `/categories/${getCategorySlug(category)}`;
-//   };
-
-//   return (
-//     <div>
-//       {/* Desktop Navigation */}
-//       <nav className="bg-secondary hidden md:block">
-//         <div className="container mx-auto px-4">
-//           <ul className="flex overflow-x-auto py-2 justify-between hide-scrollbar">
-//             {categories.map((category, index) => {
-//               const slug = getCategorySlug(category);
-//               const link = getCategoryLink(category);
-//               const isActive = pathname?.startsWith(link);
-
-//               return (
-//                 <li key={index} className="whitespace-nowrap">
-//                   <Link
-//                     href={link}
-//                     className={`px-3 py-1 text-sm hover:bg-primary hover:text-secondary rounded transition block ${
-//                       isActive ? "bg-primary " : ""
-//                     }`}
-//                   >
-//                     {category}
-//                   </Link>
-//                 </li>
-//               );
-//             })}
-//           </ul>
-//         </div>
-//       </nav>
-
-//       {/* Mobile Navigation */}
-//       <div className="md:hidden">
-//         <button
-//           onClick={() => setIsMenuOpen(!isMenuOpen)}
-//           className="bg-teal-800 text-white px-4 py-2 w-full text-left"
-//         >
-//           Categories
-//         </button>
-//         {isMenuOpen && (
-//           <ul className="bg-teal-700">
-//             {categories.map((category, index) => {
-//               const link = getCategoryLink(category);
-//               return (
-//                 <li key={index}>
-//                   <Link
-//                     href={link}
-//                     className="block px-6 py-3 hover:bg-teal-600 transition text-white"
-//                     onClick={() => setIsMenuOpen(false)}
-//                   >
-//                     {category}
-//                   </Link>
-//                 </li>
-//               );
-//             })}
-//           </ul>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NavbarMedicine;

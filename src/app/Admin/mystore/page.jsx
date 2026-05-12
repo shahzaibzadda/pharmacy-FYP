@@ -44,9 +44,10 @@ function AllProduct() {
 
   const handleSearch = () => {
     const term = searchTerm.toLowerCase();
-    const filtered = products.filter(({ _id, name }) =>
-      (_id && _id.toString().toLowerCase().includes(term)) ||
-      (name && name.toLowerCase().includes(term))
+    const filtered = products.filter(
+      ({ _id, name }) =>
+        (_id && _id.toString().toLowerCase().includes(term)) ||
+        (name && name.toLowerCase().includes(term)),
     );
     setFilteredProducts(filtered);
   };
@@ -111,25 +112,29 @@ function AllProduct() {
     { name: "name", label: "Name", type: "text" },
     { name: "price", label: "Price", type: "text" },
     { name: "stock", label: "Stock", type: "text" },
-    { name: "img", label: "Image URL", type: "text" }
+    { name: "img", label: "Image URL", type: "text" },
   ];
 
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * PRODUCTS_PER_PAGE,
-    currentPage * PRODUCTS_PER_PAGE
+    currentPage * PRODUCTS_PER_PAGE,
   );
 
   return (
     <section className="py-28 bg-[#ffffff] min-h-screen">
       <div className="container mx-auto px-4">
         {statusMsg && (
-          <div className={`mb-4 p-3 rounded-md text-center font-semibold shadow-lg ${statusMsg.isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
+          <div
+            className={`mb-4 p-3 rounded-md text-center font-semibold shadow-lg ${statusMsg.isError ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}
+          >
             {statusMsg.msg}
           </div>
         )}
         {error && (
-          <div className="mb-4 p-3 rounded-md bg-red-100 text-red-700 text-center font-semibold shadow-lg">{error}</div>
+          <div className="mb-4 p-3 rounded-md bg-red-100 text-red-700 text-center font-semibold shadow-lg">
+            {error}
+          </div>
         )}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
           <button
@@ -157,7 +162,9 @@ function AllProduct() {
           </div>
         </div>
         <div className="flex flex-wrap gap-6">
-          <div className={`${showPopup || showEditPopup ? "w-full md:w-2/3" : "w-full"}`}>
+          <div
+            className={`${showPopup || showEditPopup ? "w-full md:w-2/3" : "w-full"}`}
+          >
             <div className="p-4 bg-white shadow-xl rounded-xl overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-[#25671E]">
@@ -172,22 +179,39 @@ function AllProduct() {
                 </thead>
                 <tbody className="bg-[#48A111] divide-y divide-gray-300 text-sm">
                   {loading ? (
-                    <tr><td colSpan="6" className="text-center py-4 text-white font-semibold animate-pulse">Loading products...</td></tr>
+                    <tr>
+                      <td
+                        colSpan="6"
+                        className="text-center py-4 text-white font-semibold animate-pulse"
+                      >
+                        Loading products...
+                      </td>
+                    </tr>
                   ) : paginatedProducts.length === 0 ? (
-                    <tr><td colSpan="6" className="text-center py-4 text-white font-semibold">No products found</td></tr>
+                    <tr>
+                      <td
+                        colSpan="6"
+                        className="text-center py-4 text-white font-semibold"
+                      >
+                        No products found
+                      </td>
+                    </tr>
                   ) : (
-                    paginatedProducts.map(product => (
-                      <tr key={product._id} className="hover:bg-[#343148FF] hover:text-white font-medium transition">
-                      <td className="px-4 py-2">
-  <Image
-    src={product.img || "/asset/img/1.webp"}
-    alt={product.name}
-    width={64}
-    height={64}
-    className="object-cover rounded shadow border border-[#343148FF]"
-    unoptimized
-  />
-</td>
+                    paginatedProducts.map((product) => (
+                      <tr
+                        key={product._id}
+                        className="hover:bg-[#343148FF] hover:text-white font-medium transition"
+                      >
+                        <td className="px-4 py-2">
+                          <Image
+                           src={(product.img || "/asset/img/1.webp").trim()}
+                            alt={product.name}
+                            width={64}
+                            height={64}
+                            className="object-cover rounded shadow border border-[#343148FF]"
+                            unoptimized
+                          />
+                        </td>
                         <td className="px-4 py-2">{product.name}</td>
                         <td className="px-4 py-2">Rs. {product.price}</td>
                         <td className="px-4 py-2">{product.stock}</td>
@@ -218,7 +242,7 @@ function AllProduct() {
                 <div className="flex justify-center mt-6 gap-2">
                   <button
                     className="px-3 py-1 rounded bg-blue-500 text-white font-bold disabled:opacity-50"
-                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
                   >
                     Prev
@@ -226,7 +250,7 @@ function AllProduct() {
                   {Array.from({ length: totalPages }, (_, i) => (
                     <button
                       key={i + 1}
-                      className={`px-3 py-1 rounded font-bold ${currentPage === i + 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                      className={`px-3 py-1 rounded font-bold ${currentPage === i + 1 ? "bg-green-500 text-white" : "bg-gray-200 text-gray-700"}`}
                       onClick={() => setCurrentPage(i + 1)}
                     >
                       {i + 1}
@@ -234,7 +258,9 @@ function AllProduct() {
                   ))}
                   <button
                     className="px-3 py-1 rounded bg-blue-500 text-white font-bold disabled:opacity-50"
-                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(totalPages, p + 1))
+                    }
                     disabled={currentPage === totalPages}
                   >
                     Next

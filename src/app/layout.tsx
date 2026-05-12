@@ -1,6 +1,7 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
+import WhatsAppWidget from "@/components/whatsappwidget";
+import Chatbot from "@/components/Chatbot"; // ⭐ ADD THIS
 
 export const metadata: Metadata = {
   title: "Saydaliyya Pharmacy",
@@ -27,7 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-            <main>{children}</main>
+
+        <main>{children}</main>
+
+        {/* 💬 FLOATING CHATBOT (GLOBAL) */}
+        <Chatbot />
+
+        <WhatsAppWidget />
+
       </body>
     </html>
   );

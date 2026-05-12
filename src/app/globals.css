@@ -5,5 +5,85 @@
     --color-secondary: #25671E;
 }
 
-.animate-fade-in { animation: fadeIn 3s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none; } }
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 16px !important;
+  text-align: center;
+}
+
+/* PAGINATION CONTAINER */
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #d1d5db !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px !important;
+  border-radius: 10px !important;
+  background: #22c55e !important;
+}
+
+/* SPECIAL OFFERS SLIDER BUTTONS */
+
+.special-offers-slider {
+  position: relative;
+  overflow: visible !important;
+}
+
+.special-offers-slider .swiper-button-prev,
+.special-offers-slider .swiper-button-next {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  background: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  color: #16a34a;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+/* LEFT BUTTON */
+.special-offers-slider .swiper-button-prev {
+  left: -25px;
+}
+
+/* RIGHT BUTTON */
+.special-offers-slider .swiper-button-next {
+  right: -25px;
+}
+
+/* ICON SIZE */
+.special-offers-slider .swiper-button-prev::after,
+.special-offers-slider .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .special-offers-slider .swiper-button-prev {
+    left: -10px;
+  }
+
+  .special-offers-slider .swiper-button-next {
+    right: -10px;
+  }
+}

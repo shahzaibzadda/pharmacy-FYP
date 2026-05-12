@@ -21,8 +21,8 @@ export default function AdminNavbar() {
         {/* Brand */}
         <Link href="/" className="flex items-center gap-3 group">
           <img
-            src="/asset/logo.png"
-            className="h-12 w-12 rounded-full border-2 shadow-lg"
+            src="/asset/logo.png" 
+            className="h-12 w-12 rounded-full object-cover border-2 shadow-lg"
             style={{ borderColor: "#F7F0F0" }}
             alt="Pharmacy Logo"
           />
