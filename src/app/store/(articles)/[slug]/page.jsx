@@ -188,6 +188,7 @@ const ArticleDetailCard = ({ params }) => {
   const getCategoryFromSlug = (slug) => {
     const categoryMap = {
       "medicines": "Medicines",
+      "baby-child": "Baby & Child",
       "electronics": "Electronics",
       "vitamins-supplements": "Vitamins & Supplements",
       "skin-care": "Skin Care",

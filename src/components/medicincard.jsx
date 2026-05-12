@@ -2,11 +2,10 @@
 import React from "react";
 import Link from "next/link";
 
-const ArticleCard = ({ title, imageUrl, date, className = "" }) => {
-  const slug = title.toLowerCase().replace(/ /g, "-");
+const ArticleCard = ({ title, imageUrl, date, className = "", slug }) => {
 
   return (
-    <Link href={`store/${slug}`}>
+    <Link href={`/store/${slug}`}>
       <div className={`relative w-[220px] h-[200px] flex items-center justify-center font-sans group cursor-pointer ${className}`}>
 
         {/* CIRCLE IMAGE */}

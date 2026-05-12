@@ -92,9 +92,7 @@ export default function Chatbot() {
 
     const data = await res.json();
 
-    setMessages([
-      { role: "bot", text: data.reply, time: getTime() },
-    ]);
+    setMessages([{ role: "bot", text: data.reply, time: getTime() }]);
   };
 
   return (
@@ -102,7 +100,7 @@ export default function Chatbot() {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed h-11 w-11 bottom-18 right-5 bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-full shadow-xl hover:scale-110 transition"
+        className="fixed h-11 w-11 bottom-18 right-5 bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-full shadow-xl hover:scale-110 transition z-[99999]"
       >
         <FaRobot size={20} />
       </button>
@@ -110,9 +108,11 @@ export default function Chatbot() {
       {open && (
         <div
           ref={boxRef} // ✅ added
-          className="fixed bottom-30 right-15 w-80 h-[400px] bg-white shadow-2xl rounded-2xl flex flex-col animate-fadeIn"
+          className="fixed bottom-20 right-4 sm:bottom-30 sm:right-15 
+          w-[85vw] sm:w-80 md:w-80 
+          h-[65vh] sm:h-[400px]   
+          bg-white shadow-2xl rounded-2xl flex flex-col animate-fadeIn z-[99999]"
         >
-          
           {/* HEADER */}
           <div className="bg-gradient-to-r from-green-600 to-green-800 text-white p-3 flex justify-between items-center rounded-t-2xl">
             <span className="font-bold">Saydaliyya Assistant</span>
@@ -128,12 +128,11 @@ export default function Chatbot() {
 
           {/* CHAT AREA */}
           <div ref={chatRef} className="flex-1 p-3 overflow-y-auto bg-gray-50">
-            
             {messages.map((m, i) => (
               <div key={i} className="my-3">
-
-                <div className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                  
+                <div
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                >
                   {/* BOT ICON */}
                   {m.role === "bot" && (
                     <div className="w-7 h-7 rounded-full bg-gray-300 flex items-center justify-center mr-2">
@@ -142,7 +141,6 @@ export default function Chatbot() {
                   )}
 
                   <div className="max-w-[75%]">
-
                     {/* NAME */}
                     <p className="text-xs text-gray-400 mb-1">
                       {m.role === "user" ? "You" : "Pharmacy Bot"}
@@ -206,7 +204,6 @@ export default function Chatbot() {
                 <span className="animate-pulse">Bot is typing...</span>
               </div>
             )}
-
           </div>
 
           {/* INPUT */}
@@ -225,7 +222,6 @@ export default function Chatbot() {
               ➤
             </button>
           </div>
-
         </div>
       )}
     </>

@@ -23,7 +23,7 @@ const page = () => {
 
       <ArticlesSection />
       <FeaturesSection />
-      <SpecialOffers />
+      {/* <SpecialOffers /> */}
       <BrandMarqee />
     </>
   );
