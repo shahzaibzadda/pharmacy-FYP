@@ -91,7 +91,7 @@ const FeaturesSection = () => {
           {/* LEFT IMAGE */}
           <div className="flex justify-center">
             <img
-              src="/assets/license/license.png"
+              src="/assets/license/license1.jpeg"
               alt="Pharmacy License"
               className="w-full max-w-md rounded-2xl shadow-xl border hover:scale-105 transition duration-300"
             />
