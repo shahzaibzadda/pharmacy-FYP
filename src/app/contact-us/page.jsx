@@ -34,7 +34,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[var(--color-primary)] via-green-600 to-[var(--color-secondary)] py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-r from-[var(--color-secondary)] via-green-600 to-[var(--color-primary)] py-10 px-4">
 
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col md:flex-row">
 
@@ -94,7 +94,7 @@ export default function ContactPage() {
         </div>
 
         {/* RIGHT SIDE - INFO */}
-        <div className="w-full md:w-1/2 p-8 bg-green-500">
+        <div className="w-full md:w-1/2 p-8 bg-secondary">
 
           <h2 className="text-xl font-bold text-white mb-4">
             CONTACT INFORMATION

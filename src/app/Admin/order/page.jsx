@@ -90,19 +90,19 @@ export default function AdminOrdersPage() {
   );
 
   return (
-    <section className="py-28 bg-[#343148FF] min-h-screen">
+    <section className="py-28 bg-[#ffffff] min-h-screen">
       <div className="container mx-auto px-2 md:px-6">
         <h2 className="text-3xl font-bold text-white mb-6">Admin Orders</h2>
         <div className="flex flex-wrap gap-4 mb-4 items-center">
           <input
             type="text"
             placeholder="Search by User ID..."
-            className="px-3 py-2 rounded border focus:outline-none focus:ring w-48 bg-[#343148FF] text-[#D7C49EFF] border-[#D7C49EFF] placeholder-[#D7C49EFF]"
+            className="px-3 py-2 rounded border focus:outline-none focus:ring w-48 bg-[#48A111] text-white border-[#D7C49EFF] placeholder-[#D7C49EFF]"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <select
-            className="px-3 py-2 rounded border focus:outline-none focus:ring bg-[#343148FF] text-[#D7C49EFF] border-[#D7C49EFF]"
+            className="px-3 py-2 rounded border focus:outline-none focus:ring bg-[#48A111] text-white border-[#D7C49EFF]"
             value={filter.status}
             onChange={(e) =>
               setFilter((f) => ({ ...f, status: e.target.value }))
@@ -119,7 +119,7 @@ export default function AdminOrdersPage() {
             </option>
           </select>
           <select
-            className="px-3 py-2 rounded border focus:outline-none focus:ring bg-[#343148FF] text-[#D7C49EFF] border-[#D7C49EFF]"
+            className="px-3 py-2 rounded border focus:outline-none focus:ring bg-[#48A111] text-white border-[#D7C49EFF]"
             value={filter.delivery}
             onChange={(e) =>
               setFilter((f) => ({ ...f, delivery: e.target.value }))
@@ -143,8 +143,8 @@ export default function AdminOrdersPage() {
         )}
         <div className="overflow-x-auto rounded-lg shadow-lg bg-white">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-100 sticky top-0 z-10">
-              <tr className="text-xs font-bold text-gray-700 uppercase tracking-wider">
+            <thead className="bg-[#48A111] sticky top-0 z-10 text-white">
+              <tr className="text-xs font-bold text-white-700 uppercase tracking-wider">
                 <th className="px-4 py-3">Order ID</th>
                 <th className="px-4 py-3">User</th>
                 <th className="px-4 py-3">Items</th>

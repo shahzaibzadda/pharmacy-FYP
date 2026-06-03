@@ -67,7 +67,7 @@ export function Footer() {
 
             <li>
               <Link
-                href="/contact-us"
+                href="/privacy-policy"
                 className="hover:text-white cursor-pointer hover:font-semibold transition"
               >
               Privacy Policy

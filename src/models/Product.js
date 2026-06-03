@@ -36,16 +36,44 @@ const productSchema = new mongoose.Schema(
       min: [0, "Stock cannot be negative"],
     },
 
+    // IMPROVED: aliases for AI/symptom search
     aliases: {
       type: [String],
       default: [],
+      set: (v) =>
+        Array.isArray(v)
+          ? v.map((a) => a.toLowerCase().trim())
+          : [],
     },
   },
   {
     timestamps: true,
-  },
+  }
 );
+
+/**
+ *  AUTO GENERATE ALIASES (IMPORTANT FIX)
+ */
+productSchema.pre("save", function (next) {
+  if (!this.aliases || this.aliases.length === 0) {
+    this.aliases = [
+      this.name,
+      this.category,
+      this.type,
+    ]
+      .filter(Boolean)
+      .map((a) => a.toLowerCase());
+
+    // optional smart alias from name words
+    const words = this.name.toLowerCase().split(" ");
+    this.aliases.push(...words);
+  }
+
+  this.aliases = [...new Set(this.aliases)];
+  next();
+});
 
 const Product =
   mongoose.models.Product || mongoose.model("Product", productSchema);
+
 export default Product;

@@ -16,13 +16,24 @@ const clean = (text = "") =>
 // =========================
 const tokenize = (text = "") => {
   const noiseWords = [
-    "tablet", "mg", "hai", "haan", "available", "availble", "capsule",
-    "plz", "please", "kya", "koi", "bhi", "medicine"
+    "tablet",
+    "mg",
+    "hai",
+    "haan",
+    "available",
+    "availble",
+    "capsule",
+    "plz",
+    "please",
+    "kya",
+    "koi",
+    "bhi",
+    "medicine",
   ];
 
   return clean(text)
     .split(" ")
-    .filter(t => t && !noiseWords.includes(t));
+    .filter((t) => t && !noiseWords.includes(t));
 };
 
 // =========================
@@ -53,7 +64,7 @@ const symptomMap = {
 };
 
 // =========================
-// 🧠 SMART MATCH ENGINE
+// 🧠 MATCH ENGINE
 // =========================
 const findMatches = (msg, products) => {
   const msgTokens = tokenize(msg);
@@ -76,177 +87,193 @@ const findMatches = (msg, products) => {
       else if (desc.includes(t)) score += 20;
     }
 
-    if (score > 0) {
-      results.push({ product: p, score });
-    }
+    if (score > 0) results.push({ product: p, score });
   }
 
   return results.sort((a, b) => b.score - a.score);
 };
 
 // =========================
-// 🚀 MEMORY FIX
+// 🚀 MEMORY
 // =========================
 const sessionMemory = new Map();
 
-// 🔥 FIX: normalize key
 const getKey = (msg) =>
-  clean(msg)
-    .replace(/\b(hai|kya|haan|please|plz)\b/g, "")
-    .trim();
+  clean(msg).replace(/\b(hai|kya|haan|please|plz)\b/g, "").trim();
 
 // =========================
 // 🚀 API
 // =========================
 export async function POST(req) {
-  await dbConnect();
+  try {
+    await dbConnect();
 
-  // 🔥 UPDATED (reset added)
-  const { message, reset } = await req.json();
+    // 🔥 SAFE JSON PARSE (IMPORTANT FIX)
+    let body = {};
+    try {
+      body = await req.json();
+    } catch {
+      return Response.json({ reply: "Invalid request body" }, { status: 400 });
+    }
 
-  // 🔥 RESET HANDLER
-  if (reset) {
-    sessionMemory.clear();
-    return Response.json({
-      reply: "🔄 Chat reset ho gayi hai. Aap dobara search kar sakte hain."
-    });
-  }
+    const { message, reset } = body || {};
 
-  const msg = clean(message || "");
+    // ================= RESET
+    if (reset) {
+      sessionMemory.clear();
+      return Response.json({
+        reply:
+          "🔄 Chat reset ho gayi hai. Aap dobara search kar sakte hain.",
+      });
+    }
 
-  const products = await Product.find();
+    if (!message) {
+      return Response.json({ reply: "Message missing" }, { status: 400 });
+    }
 
-  const intent = detectIntent(msg);
+    const msg = clean(message);
+    const products = await Product.find();
+    const intent = detectIntent(msg);
 
-  // ================= GREETING
-  if (intent === "greeting") {
-    return Response.json({
-      reply: "👋 Welcome to Saydaliyya Pharmacy! How can I assist you today?"
-    });
-  }
+    // ================= GREETING
+    if (intent === "greeting") {
+      return Response.json({
+        reply:
+          "👋 Welcome to Saydaliyya Pharmacy! How can I assist you today?",
+      });
+    }
 
-  // ================= PAYMENT
-  if (intent === "payment") {
-    return Response.json({
-      reply: "💳 We accept Cash on Delivery, JazzCash & Easypaisa."
-    });
-  }
+    // ================= PAYMENT
+    if (intent === "payment") {
+      return Response.json({
+        reply:
+          "💳 We accept Cash on Delivery, JazzCash & Easypaisa.",
+      });
+    }
 
-  // ================= ORDER
-  if (intent === "order") {
-    return Response.json({
-      reply: "🛒 Select product → Add to Cart → Checkout."
-    });
-  }
+    // ================= ORDER
+    if (intent === "order") {
+      return Response.json({
+        reply: "🛒 Select product → Add to Cart → Checkout.",
+      });
+    }
 
-  // ================= DELIVERY
-  if (intent === "delivery") {
-    return Response.json({
-      reply: "🚚 Delivery usually takes 2–3 days."
-    });
-  }
+    // ================= DELIVERY
+    if (intent === "delivery") {
+      return Response.json({
+        reply: "🚚 Delivery usually takes 2–3 days.",
+      });
+    }
 
-  // ================= SYMPTOM
-  if (intent === "symptom") {
-    for (let key in symptomMap) {
-      if (msg.includes(key)) {
-        const matches = products.filter(p =>
-          symptomMap[key].some(k =>
-            clean(p.name).includes(k) ||
-            clean(p.description || "").includes(key)
-          )
-        );
+    // ================= SYMPTOM
+    if (intent === "symptom") {
+      for (let key in symptomMap) {
+        if (msg.includes(key)) {
+          const matches = products.filter((p) =>
+            symptomMap[key].some(
+              (k) =>
+                clean(p.name).includes(k) ||
+                clean(p.description || "").includes(key)
+            )
+          );
 
-        if (matches.length > 0) {
-          const top = matches.slice(0, 2);
+          if (matches.length > 0) {
+            const top = matches.slice(0, 2);
 
-          return Response.json({
-            reply:
-              `💊 Based on your symptoms I recommend:\n\n` +
-              top
-                .map(p => `• ${p.name} - ${p.description} (Rs ${p.price})`)
-                .join("\n\n"),
-            products: top.map(p => ({
-              id: p._id,
-              name: p.name
-            }))
-          });
+            return Response.json({
+              reply:
+                `💊 Based on your symptoms I recommend:\n\n` +
+                top
+                  .map(
+                    (p) =>
+                      `• ${p.name} - ${p.description} (Rs ${p.price})`
+                  )
+                  .join("\n\n"),
+              products: top.map((p) => ({
+                id: p._id,
+                name: p.name,
+              })),
+            });
+          }
         }
       }
     }
-  }
 
-  // ================= PRODUCT SEARCH
-  const matches = findMatches(msg, products);
+    // ================= PRODUCT SEARCH
+    const matches = findMatches(msg, products);
 
-  if (matches.length === 0) {
-    return Response.json({
-      reply: "❌ Product nahi mila."
-    });
-  }
+    if (matches.length === 0) {
+      return Response.json({
+        reply: "❌ Product nahi mila.",
+      });
+    }
 
-  const best = matches[0];
-  const exactMatch = clean(best.product.name) === msg;
+    const best = matches[0];
+    const exactMatch = clean(best.product.name) === msg;
 
-  // ================= SESSION
-  const key = getKey(msg);
-  const last = sessionMemory.get(key);
-  const isRepeat = last === key;
-  sessionMemory.set(key, key);
+    const key = getKey(msg);
+    const last = sessionMemory.get(key);
+    const isRepeat = last === key;
+    sessionMemory.set(key, key);
 
-  // ================= 🔥 ALTERNATIVE LOGIC (UNCHANGED)
-  const baseName = clean(best.product.name).split(" ")[0];
+    const baseName = clean(best.product.name).split(" ")[0];
 
-  const realAlternatives = matches.filter(m => {
-    const n = clean(m.product.name).split(" ")[0];
-    return n === baseName && m.product._id.toString() !== best.product._id.toString();
-  });
+    const realAlternatives = matches.filter(
+      (m) =>
+        clean(m.product.name).split(" ")[0] === baseName &&
+        m.product._id.toString() !== best.product._id.toString()
+    );
 
-  const hasAlternatives = realAlternatives.length > 0;
+    const hasAlternatives = realAlternatives.length > 0;
 
-  // ================= SECOND TIME
-  if (isRepeat && (exactMatch || matches.length >= 1)) {
+    // ================= SECOND TIME
+    if (isRepeat && (exactMatch || matches.length >= 1)) {
+      return Response.json({
+        reply:
+          `💊 ${best.product.name}\n` +
+          `📌 ${best.product.description}\n` +
+          `💰 Rs ${best.product.price}\n\n🛒 Add to Cart`,
+        product: {
+          id: best.product._id,
+          name: best.product.name,
+        },
+      });
+    }
+
+    // ================= FIRST TIME
+    if (!hasAlternatives) {
+      return Response.json({
+        reply:
+          `💊 ${best.product.name}\n` +
+          `📌 ${best.product.description}\n` +
+          `💰 Rs ${best.product.price}\n\n🛒 Add to Cart`,
+        product: {
+          id: best.product._id,
+          name: best.product.name,
+        },
+      });
+    }
+
+    // ================= LIST
+    const top = matches.slice(0, 3);
+
     return Response.json({
       reply:
-        `💊 ${best.product.name}\n` +
-        `📌 ${best.product.description}\n` +
-        `💰 Rs ${best.product.price}\n\n🛒 Add to Cart`,
-      product: {
-        id: best.product._id,
-        name: best.product.name
-      }
+        `🔎 Multiple products found:\n\n` +
+        top
+          .map((r) => `• ${r.product.name}\n  💰 Rs ${r.product.price}`)
+          .join("\n\n") +
+        `\n\n👉 Please type again exact product name.`,
+      products: top.map((r) => ({
+        id: r.product._id,
+        name: r.product.name,
+      })),
     });
+  } catch (err) {
+    console.log("CHAT ERROR:", err);
+    return Response.json(
+      { reply: "Server error occurred" },
+      { status: 500 }
+    );
   }
-
-  // ================= FIRST TIME DIRECT
-  if (!hasAlternatives) {
-    return Response.json({
-      reply:
-        `💊 ${best.product.name}\n` +
-        `📌 ${best.product.description}\n` +
-        `💰 Rs ${best.product.price}\n\n🛒 Add to Cart`,
-      product: {
-        id: best.product._id,
-        name: best.product.name
-      }
-    });
-  }
-
-  // ================= LIST
-  const top = matches.slice(0, 3);
-
-  return Response.json({
-    reply:
-      `🔎 Multiple products found:\n\n` +
-      top
-        .map((r) =>
-          `• ${r.product.name}\n  💰 Rs ${r.product.price}`
-        )
-        .join("\n\n") +
-      `\n\n👉 Please type again exact product name for Add to Cart.`,
-    products: top.map(r => ({
-      id: r.product._id,
-      name: r.product.name
-    }))
-  });
 }

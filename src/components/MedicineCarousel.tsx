@@ -40,20 +40,20 @@ const MEDICINE_CAROUSEL_ITEMS = [
   },
   {
     id: 2,
-    title: "Diabetes Care",
+    title: "Medical Devices",
     description: "Premium glucose monitors now in stock",
     image: "/asset/img/2.webp",
     cta: "View Products",
     slug: "medical-devices", // ✅ Category slug
   },
-  {
-    id: 5,
-    title: "Senior Health Solutions",
-    description: "Specialized care for golden years",
-    image: "/asset/img/5.webp",
-    cta: "Learn More",
-    slug: "personal-care", // ✅ Category slug
-  },
+  // {
+  //   id: 5,
+  //   title: "Personal Care",
+  //   description: "Specialized care for golden years",
+  //   image: "/asset/img/5.webp",
+  //   cta: "Learn More",
+  //   slug: "personal-care", // ✅ Category slug
+  // },
   {
     id: 6,
     title: "Skin Care Essentials",
