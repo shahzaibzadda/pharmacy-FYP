@@ -18,7 +18,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 1,
     title: "Wide Range of Medicines",
     description: "Get 20% off on all seasonal medicines",
-    image: "/asset/img/medicar.png",
+    image: "/asset/img/Gemini_Generated_Image_f88fxcf88fxcf88f.png",
     cta: "Shop Now",
     slug: "medicines", // ✅ Category slug
   },
@@ -26,7 +26,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 4,
     title: "Baby Care Products", 
     description: "Gentle and safe solutions for your little ones",
-    image: "/asset/img/4.webp",
+    image: "/asset/img/Gemini_Generated_Image_43ewq243ewq243ew.png",
     cta: "Discover",
     slug: "baby-child", // ✅ Category slug
   },
@@ -42,7 +42,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 2,
     title: "Medical Devices",
     description: "Premium glucose monitors now in stock",
-    image: "/asset/img/2.webp",
+    image: "/asset/img/WhatsApp Image 2026-06-05 at 10.32.22 AM.jpeg",
     cta: "View Products",
     slug: "medical-devices", // ✅ Category slug
   },
@@ -58,7 +58,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 6,
     title: "Skin Care Essentials",
     description: "Gentle care for healthy and glowing skin",
-    image: "/asset/img/6.webp",
+    image: "/asset/img/WhatsApp Image 2026-06-05 at 10.31.56 AM.jpeg",
     cta: "Shop Now",
     slug: "skin-care", // ✅ Category slug
   },
@@ -66,7 +66,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 7,
     title: "Medicated Cosmetics",
     description: "Advanced formulations for specific skin concerns",
-    image: "/asset/img/7.webp",
+    image: "/asset/img/WhatsApp Image 2026-06-05 at 10.32.07 AM.jpeg",
     cta: "Explore",
     slug: "medicated-cosmetics", // ✅ Category slug
   },
@@ -74,7 +74,7 @@ const MEDICINE_CAROUSEL_ITEMS = [
     id: 8,
     title: "Personal Care",
     description: "Essential products for your daily routine",
-    image: "/asset/img/8.webp",
+    image: "/asset/img/WhatsApp Image 2026-06-05 at 10.31.45 AM.jpeg",
     cta: "Shop Now",
     slug: "personal-care", // ✅ Category slug
   },

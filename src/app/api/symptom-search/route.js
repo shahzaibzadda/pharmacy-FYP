@@ -41,7 +41,7 @@ export async function POST(req) {
             {
               role: "system",
               content:
-                "You are a helpful pharmacy assistant. Suggest medicines only from the medicines list provided by the store. Maximum 4-5 lines. Do not use bold formatting. At the end write: Search in Saydaliyya e-Pharmacy Store!",
+                "You are a helpful pharmacy assistant. Suggest medicines only from the medicines list provided by the store. Maximum 4-5 lines. Do not use bold formatting. At the end write:Caution:Always consult a doctor before taking any medicine. Do not suggest any medicine if symptoms are not clear or if they require a doctor's consultation.",
             },
             {
               role: "user",
